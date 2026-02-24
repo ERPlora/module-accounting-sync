@@ -1,0 +1,83 @@
+{% load djicons i18n %}
+
+<div x-data="{ confirmDelete: false }">
+
+<div class="side-sheet-header">
+    <h3 class="sheet-title">{% trans "Edit Synclog" %}</h3>
+    <button class="sheet-close" @click="closePanel()">{% icon "close-outline" %}</button>
+</div>
+
+<div class="side-sheet-content">
+    <form id="edit-sync_log-form"
+          hx-post="{% url 'accounting_sync:sync_log_edit' obj.id %}"
+          hx-target="#datatable-body"
+          hx-swap="innerHTML"
+          @htmx:after-request="closePanel()"
+          class="flex flex-col gap-4 p-6">
+        {% csrf_token %}
+
+        {% if error %}
+        <div class="callout callout-error">
+            <div class="callout-content"><span class="callout-text">{{ error }}</span></div>
+        </div>
+        {% endif %}
+
+        <div>
+            <label class="text-sm font-medium mb-1 block">{% trans "Direction" %}</label>
+            <input type="text" name="direction" class="input input-sm w-full" value="{{ obj.direction }}">
+        </div>
+
+        <div>
+            <label class="text-sm font-medium mb-1 block">{% trans "Entity Type" %}</label>
+            <input type="text" name="entity_type" class="input input-sm w-full" value="{{ obj.entity_type }}">
+        </div>
+
+        <div>
+            <label class="text-sm font-medium mb-1 block">{% trans "Records Synced" %}</label>
+            <input type="number" name="records_synced" class="input input-sm w-full" value="{{ obj.records_synced }}">
+        </div>
+
+        <div>
+            <label class="text-sm font-medium mb-1 block">{% trans "Status" %}</label>
+            <input type="text" name="status" class="input input-sm w-full" value="{{ obj.status }}">
+        </div>
+
+        <div>
+            <label class="text-sm font-medium mb-1 block">{% trans "Error Message" %}</label>
+            <textarea name="error_message" class="textarea textarea-sm w-full" rows="3">{{ obj.error_message }}</textarea>
+        </div>
+    </form>
+
+    <div class="border-t border-base-300 pt-4 mt-4 px-6 pb-6">
+        <h4 class="font-semibold text-sm mb-3 text-error">{% trans "Danger Zone" %}</h4>
+        <template x-if="!confirmDelete">
+            <button type="button" class="btn btn-sm btn-outline color-error w-full" @click="confirmDelete = true">
+                {% icon "trash-outline" %} {% trans "Delete" %}
+            </button>
+        </template>
+        <template x-if="confirmDelete">
+            <div>
+                <p class="text-error text-sm font-semibold mb-3">{% trans "Are you sure?" %}</p>
+                <div class="flex gap-2">
+                    <button type="button" class="btn btn-sm btn-outline flex-1" @click="confirmDelete = false">{% trans "Cancel" %}</button>
+                    <button type="button" class="btn btn-sm color-error flex-1"
+                            hx-post="{% url 'accounting_sync:sync_log_delete' obj.id %}"
+                            hx-target="#datatable-body" hx-swap="innerHTML" @click="closePanel()">
+                        {% icon "trash-outline" %} {% trans "Delete" %}
+                    </button>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+<div class="side-sheet-footer">
+    <div class="flex justify-end gap-2">
+        <button type="button" class="btn btn-ghost btn-sm" @click="closePanel()">{% trans "Cancel" %}</button>
+        <button type="submit" form="edit-sync_log-form" class="btn btn-sm color-primary">
+            {% icon "checkmark-outline" %} {% trans "Save" %}
+        </button>
+    </div>
+</div>
+
+</div>
