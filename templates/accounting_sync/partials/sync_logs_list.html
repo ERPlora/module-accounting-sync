@@ -11,39 +11,39 @@
                         <span class="checkbox-mark"></span>
                     </label>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'connection' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'connection' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:sync_logs_list' %}?sort=connection&dir={% if sort_field == 'connection' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#sync_logs-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#sync_logs-datatable">
                     {% trans "AccountingConnection" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'status' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'status' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:sync_logs_list' %}?sort=status&dir={% if sort_field == 'status' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#sync_logs-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#sync_logs-datatable">
                     {% trans "Status" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'records_synced' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'records_synced' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:sync_logs_list' %}?sort=records_synced&dir={% if sort_field == 'records_synced' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#sync_logs-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#sync_logs-datatable">
                     {% trans "Records Synced" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'direction' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'direction' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:sync_logs_list' %}?sort=direction&dir={% if sort_field == 'direction' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#sync_logs-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#sync_logs-datatable">
                     {% trans "Direction" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'entity_type' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'entity_type' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:sync_logs_list' %}?sort=entity_type&dir={% if sort_field == 'entity_type' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#sync_logs-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#sync_logs-datatable">
                     {% trans "Entity Type" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'error_message' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'error_message' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:sync_logs_list' %}?sort=error_message&dir={% if sort_field == 'error_message' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#sync_logs-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#sync_logs-datatable">
                     {% trans "Error Message" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>

@@ -11,39 +11,39 @@
                         <span class="checkbox-mark"></span>
                     </label>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'name' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'name' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:accounting_connections_list' %}?sort=name&dir={% if sort_field == 'name' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable">
                     {% trans "Name" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'status' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'status' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:accounting_connections_list' %}?sort=status&dir={% if sort_field == 'status' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable">
                     {% trans "Status" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'sync_enabled' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'sync_enabled' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:accounting_connections_list' %}?sort=sync_enabled&dir={% if sort_field == 'sync_enabled' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable">
                     {% trans "Sync Enabled" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'provider' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'provider' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:accounting_connections_list' %}?sort=provider&dir={% if sort_field == 'provider' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable">
                     {% trans "Provider" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'access_token' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'access_token' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:accounting_connections_list' %}?sort=access_token&dir={% if sort_field == 'access_token' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable">
                     {% trans "Access Token" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
-                <th class="datatable-th datatable-th-sortable{% if sort_field == 'refresh_token' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
+                <th class="cursor-pointer datatable-th datatable-th-sortable{% if sort_field == 'refresh_token' %} datatable-th-sorted{% if sort_dir == 'desc' %} datatable-th-sorted-desc{% endif %}{% endif %}"
                     hx-get="{% url 'accounting_sync:accounting_connections_list' %}?sort=refresh_token&dir={% if sort_field == 'refresh_token' and sort_dir == 'asc' %}desc{% else %}asc{% endif %}"
-                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable" style="cursor: pointer;">
+                    hx-target="#datatable-body" hx-include="#accounting_connections-datatable">
                     {% trans "Refresh Token" %}
                     <span class="datatable-sort-icon">{% icon "chevron-up-outline" %}</span>
                 </th>
