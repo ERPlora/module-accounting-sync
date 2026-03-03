@@ -29,3 +29,16 @@ PERMISSIONS = [
 'accounting_sync.manage_sync',
 'accounting_sync.manage_settings',
 ]
+
+ROLE_PERMISSIONS = {
+    "admin": ["*"],
+    "manager": [
+        "add_accountingconnection",
+        "manage_sync",
+        "view_accountingconnection",
+    ],
+    "employee": [
+        "add_accountingconnection",
+        "view_accountingconnection",
+    ],
+}
