@@ -1,0 +1,60 @@
+{% load djicons i18n %}
+<div data-back-url="{% url 'accounting_sync:sync_logs_list' %}" hidden></div>
+
+<div class="p-4">
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6">
+        <h1 class="text-2xl font-bold">{% trans "Add Synclog" %}</h1>
+        <div class="flex gap-2">
+            <a class="btn btn-ghost btn-sm"
+               hx-get="{% url 'accounting_sync:sync_logs_list' %}"
+               hx-target="#main-content-area"
+               hx-push-url="true">
+                {% trans "Cancel" %}
+            </a>
+            <button type="submit" form="add-sync_log-form" class="btn btn-sm color-primary">
+                {% icon "checkmark-outline" %}
+                {% trans "Save" %}
+            </button>
+        </div>
+    </div>
+
+        {% if error %}
+        <div class="callout callout-error">
+            <div class="callout-content"><span class="callout-text">{{ error }}</span></div>
+        </div>
+        {% endif %}
+    <!-- Form -->
+    <form id="add-sync_log-form"
+          hx-post="{% url 'accounting_sync:sync_log_add' %}" class="max-w-2xl">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-body flex flex-col gap-4">
+                <div>
+                <label class="text-sm font-medium mb-1 block">{% trans "Direction" %}</label>
+                <input type="text" name="direction" class="input input-sm w-full" placeholder="{% trans 'Direction' %}">
+                </div>
+
+                <div>
+                <label class="text-sm font-medium mb-1 block">{% trans "Entity Type" %}</label>
+                <input type="text" name="entity_type" class="input input-sm w-full" placeholder="{% trans 'Entity Type' %}">
+                </div>
+
+                <div>
+                <label class="text-sm font-medium mb-1 block">{% trans "Records Synced" %}</label>
+                <input type="number" name="records_synced" class="input input-sm w-full"  placeholder="0">
+                </div>
+
+                <div>
+                <label class="text-sm font-medium mb-1 block">{% trans "Status" %}</label>
+                <input type="text" name="status" class="input input-sm w-full" placeholder="{% trans 'Status' %}">
+                </div>
+
+                <div>
+                <label class="text-sm font-medium mb-1 block">{% trans "Error Message" %}</label>
+                <textarea name="error_message" class="textarea textarea-sm w-full" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

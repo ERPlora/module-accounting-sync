@@ -3,6 +3,8 @@ Accounting Sync (Xero/QB) Module Views
 """
 from django.core.paginator import Paginator
 from django.db.models import Q, Count
+from django.http import HttpResponse
+from django.urls import reverse
 from django.shortcuts import get_object_or_404, render as django_render
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -114,6 +116,7 @@ def accounting_connections_list(request):
     }
 
 @login_required
+@htmx_view('accounting_sync/pages/accounting_connection_add.html', 'accounting_sync/partials/accounting_connection_add_content.html')
 def accounting_connection_add(request):
     hub_id = request.session.get('hub_id')
     if request.method == 'POST':
@@ -133,10 +136,13 @@ def accounting_connection_add(request):
         obj.last_sync_at = last_sync_at
         obj.sync_enabled = sync_enabled
         obj.save()
-        return _render_accounting_connections_list(request, hub_id)
-    return django_render(request, 'accounting_sync/partials/panel_accounting_connection_add.html', {})
+        response = HttpResponse(status=204)
+        response['HX-Redirect'] = reverse('accounting_sync:accounting_connections_list')
+        return response
+    return {}
 
 @login_required
+@htmx_view('accounting_sync/pages/accounting_connection_edit.html', 'accounting_sync/partials/accounting_connection_edit_content.html')
 def accounting_connection_edit(request, pk):
     hub_id = request.session.get('hub_id')
     obj = get_object_or_404(AccountingConnection, pk=pk, hub_id=hub_id, is_deleted=False)
@@ -150,7 +156,7 @@ def accounting_connection_edit(request, pk):
         obj.sync_enabled = request.POST.get('sync_enabled') == 'on'
         obj.save()
         return _render_accounting_connections_list(request, hub_id)
-    return django_render(request, 'accounting_sync/partials/panel_accounting_connection_edit.html', {'obj': obj})
+    return {'obj': obj}
 
 @login_required
 @require_POST
@@ -255,6 +261,7 @@ def sync_logs_list(request):
     }
 
 @login_required
+@htmx_view('accounting_sync/pages/sync_log_add.html', 'accounting_sync/partials/sync_log_add_content.html')
 def sync_log_add(request):
     hub_id = request.session.get('hub_id')
     if request.method == 'POST':
@@ -270,10 +277,13 @@ def sync_log_add(request):
         obj.status = status
         obj.error_message = error_message
         obj.save()
-        return _render_sync_logs_list(request, hub_id)
-    return django_render(request, 'accounting_sync/partials/panel_sync_log_add.html', {})
+        response = HttpResponse(status=204)
+        response['HX-Redirect'] = reverse('accounting_sync:sync_logs_list')
+        return response
+    return {}
 
 @login_required
+@htmx_view('accounting_sync/pages/sync_log_edit.html', 'accounting_sync/partials/sync_log_edit_content.html')
 def sync_log_edit(request, pk):
     hub_id = request.session.get('hub_id')
     obj = get_object_or_404(SyncLog, pk=pk, hub_id=hub_id, is_deleted=False)
@@ -285,7 +295,7 @@ def sync_log_edit(request, pk):
         obj.error_message = request.POST.get('error_message', '').strip()
         obj.save()
         return _render_sync_logs_list(request, hub_id)
-    return django_render(request, 'accounting_sync/partials/panel_sync_log_edit.html', {'obj': obj})
+    return {'obj': obj}
 
 @login_required
 @require_POST
