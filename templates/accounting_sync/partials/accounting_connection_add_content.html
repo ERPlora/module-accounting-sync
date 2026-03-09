@@ -26,7 +26,7 @@
         {% endif %}
     <!-- Form -->
     <form id="add-accounting_connection-form"
-          hx-post="{% url 'accounting_sync:accounting_connection_add' %}" class="max-w-2xl">
+          hx-post="{% url 'accounting_sync:accounting_connection_add' %}">
         {% csrf_token %}
         <div class="card mb-4">
             <div class="card-body flex flex-col gap-4">
