@@ -2,8 +2,8 @@ from django.utils.translation import gettext_lazy as _
 
 MODULE_ID = 'accounting_sync'
 MODULE_NAME = _('Accounting Sync (Xero/QB)')
-MODULE_VERSION = '1.0.0'
-MODULE_ICON = 'sync-outline'
+MODULE_VERSION = '1.0.1'
+MODULE_ICON = 'material:currency_exchange'
 MODULE_DESCRIPTION = _('Sync with Xero, QuickBooks and other accounting platforms')
 MODULE_AUTHOR = 'ERPlora'
 MODULE_CATEGORY = 'integrations'
